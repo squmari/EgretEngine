@@ -49,7 +49,7 @@
 
         //Enable touchEvent
         this.egretImage.touchEnabled =true;
-        this.egretImage.pixelHitTest = true;
+        //this.egretImage.pixelHitTest = true;
         this.addChild(this.egretImage);
 
         this.egretImage.x = 100;

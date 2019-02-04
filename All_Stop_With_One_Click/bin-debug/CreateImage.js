@@ -96,7 +96,7 @@ var CreateImage = (function (_super) {
         this.egretMoveFlag = true;
         //Enable touchEvent
         this.egretImage.touchEnabled = true;
-        this.egretImage.pixelHitTest = true;
+        //this.egretImage.pixelHitTest = true;
         this.addChild(this.egretImage);
         this.egretImage.x = 100;
         this.egretImage.y = 100 + Math.floor(Math.random() * 300);
