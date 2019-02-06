@@ -1,4 +1,5 @@
-　class CreateImage extends  egret.DisplayObjectContainer {
+
+class CreateImage extends  egret.DisplayObjectContainer {
 
     /**
      * 画像のプロパティ
@@ -37,11 +38,12 @@
         return result;
     }
 
-    
     /**
      * 画像の生成
      */
     public generateEgretImage(event:egret.Event): void {
+
+        
 
         // 画像の生成
         this.egretImage = this.createBitmapByName("egret_icon_png");

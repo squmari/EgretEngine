@@ -1,4 +1,8 @@
 class Main extends egret.DisplayObjectContainer {
+
+        private createPhysicsBall :CreatePhysicsBall[] = [];
+        private world : p2.World;
+        private BallNumber : number = 1000;
  
         public constructor() {
         super();
@@ -9,9 +13,9 @@ class Main extends egret.DisplayObjectContainer {
 
     private addToStage(event:egret.Event) {
 
-        const world = new p2.World();
-        world.sleepMode = p2.World.BODY_SLEEPING;
-        world.gravity = [0, 9.8];
+        this.world = new p2.World();
+        this.world.sleepMode = p2.World.BODY_SLEEPING;
+        this.world.gravity = [0, 9.8*50];
 
         //見えない壁や地面の生成
         for(let i = 0; i < 3; i++){
@@ -42,14 +46,30 @@ class Main extends egret.DisplayObjectContainer {
             }
 
             planeBody[i].addShape(planeShape[i]);
-            world.addBody(planeBody[i]);
+            this.world.addBody(planeBody[i]);
         }
 
 
-        for(let i = 0; i < 200; i++){
-            let createPhysicsBall = new CreatePhysicsBall(i,i, world);
-            this.addChild(createPhysicsBall);
+        for(let i = 0; i < this.BallNumber; i++){
+            this.createPhysicsBall[i] = new CreatePhysicsBall(this.world, i , i);
+            this.createPhysicsBall[i].drawBall();
+            this.addChild(this.createPhysicsBall[i]);
         }
+
+        //ループ処理
+        this.addEventListener(egret.Event.ENTER_FRAME,this.worldBigin,this);
+
+
+    }
+
+    private worldBigin(dt: number): Boolean{
+        //bodyを自然落下
+        this.world.step(1/60, dt/1000, 10);
+        //console.log(this.body.position[1]);
+        for(let i = 0; i < this.BallNumber; i++){
+            this.createPhysicsBall[i].moveBall();        
+        }
+        return false;
         
     }
 

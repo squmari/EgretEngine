@@ -1,3 +1,4 @@
+
 //////////////////////////////////////////////////////////////////////////////////////
 //
 //  Copyright (c) 2014-present, Egret Technology.
@@ -102,6 +103,9 @@ class Main extends eui.UILayer {
 
     //ゲームシーンの生成
     protected createGameScene(): void {
+
+  
+console.log(name); //Taro
 
         const timer:egret.Timer = new egret.Timer(2000,-1);
         timer.addEventListener(egret.TimerEvent.TIMER,this.create,this);

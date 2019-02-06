@@ -168,6 +168,7 @@ var Main = (function (_super) {
     };
     //ゲームシーンの生成
     Main.prototype.createGameScene = function () {
+        console.log(name); //Taro
         var timer = new egret.Timer(2000, -1);
         timer.addEventListener(egret.TimerEvent.TIMER, this.create, this);
         timer.start();
