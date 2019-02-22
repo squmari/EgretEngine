@@ -32,8 +32,14 @@ class CreateGameScene{
 
         new CreatePhysicsWorld();
         new Ball(CreateGameScene.width/2, 0, 20);
+
+//------------------------------------------------------------
+//Boxを２つインスタンス化すると、1つ目のBoxにボールが当たっても、2つ目のBoxのHPが減る
+
         new Box(CreateGameScene.width/2, 500, 100, 30, 10);
         new Box(CreateGameScene.width/2, 800, 100, 30, 10);
+
+//---------------------------------------------------------------
         egret.startTick(this.tickLoop, this);
 
     }
